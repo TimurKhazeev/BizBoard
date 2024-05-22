@@ -1,24 +1,41 @@
 //
 //  ContentView.swift
-//  BizBoard
+//  SocialRating
 //
-//  Created by Тимур Хазеев on 19.05.2024.
+//  Created by Тимур Хазеев on 11.11.2023.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+  
+  @StateObject var viewModel = MainViewModel()
+  
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+    
+      if viewModel.isSignedId, !viewModel.currentUserId.isEmpty {
+        accountView
+      } else {
+        InputView()
+      }
     }
+  
+  @ViewBuilder
+  var accountView: some View {
+    TabView {
+      MasterView(userId: viewModel.currentUserId)
+        .tabItem {
+          Label("Home", systemImage: "house")
+        }
+      
+      ProfileView()
+        .tabItem {
+          Label("Profile", systemImage: "person.circle")
+        }
+    }
+  }
 }
 
 #Preview {
-    ContentView()
+  MainView()
 }

@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct BizBoardApp: App {
+  init() {
+    FirebaseApp.configure()
+  }
+  
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          ScreensaverView()
         }
     }
 }

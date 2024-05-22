@@ -1,18 +1,138 @@
 //
 //  RegistrationView.swift
-//  BizBoard
+//  SocialRating
 //
-//  Created by Тимур Хазеев on 22.05.2024.
+//  Created by Тимур Хазеев on 11.11.2023.
 //
+// Страница регистрации
 
 import SwiftUI
 
 struct RegistrationView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  
+  @Environment(\.presentationMode) var presentationMode
+  @StateObject var viewModel = RegistrationViewModel()
+  
+  var body: some View {
+    
+    // Сообщение об ошибки
+    VStack {
+      if !viewModel.errorMessage.isEmpty {
+        Text(viewModel.errorMessage)
+          .foregroundColor(.blue)
+      }
     }
+    .padding(.top, 15)
+    
+    
+    ScrollView{
+      // Заголовок
+      HStack {
+        Image("logoBlue")
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .frame(width: 75, height: 75)
+        
+        Text("BizBoard")
+          .font(.system(size: 40))
+          .foregroundColor(.midnightBlue)
+          .bold()
+      }
+      .padding(.top, 15)
+      
+      // Блок регестрации
+      VStack{
+        
+        // Подзаголовок
+        HStack{
+          Text("Registration")
+            .font(.system(size: 30))
+            .foregroundColor(.midnightBlue)
+            .bold()
+          Spacer()
+        }
+        .padding(.top, 25)
+        
+        // Блок имени
+        HStack{
+          Text("Full name")
+          Spacer()
+        }
+        .padding(.top, 10)
+        
+        
+        TextField("Enter full name", text: $viewModel.name)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .autocorrectionDisabled(true)
+        
+        // Блок mail
+        HStack{
+          Text("Email")
+          Spacer()
+        }
+        .padding(.top, 15)
+        
+        TextField("Enter Email", text: $viewModel.mail)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .autocorrectionDisabled(true)
+        
+        // Блок пароля
+        HStack{
+          Text("Password")
+          Spacer()
+        }
+        .padding(.top, 15)
+        
+        SecureField("Enter the password", text: $viewModel.password)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+        
+        // Блок повтора пароля
+        HStack{
+          Text("Repeat password")
+          Spacer()
+        }
+        .padding(.top, 15)
+        
+        SecureField("Enter the password", text: $viewModel.passwordRepeat)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+        
+        // Кнопка регистрации
+        Button(action: {
+          viewModel.registration()
+        }) {
+          Text("Registration")
+            .font(.system(size: 26))
+            .foregroundColor(.white)
+            .bold()
+        }
+        .buttonStyle(SRButtonStyle())
+        .padding(.top, 25)
+        .padding(.bottom, 50)
+        
+      }
+      .padding()
+    }
+
+    
+    // Кнопка возврата на страницу входа
+    HStack {
+      Text("Already have an account?")
+        .foregroundColor(.gray)
+      
+      Button(action: {
+        presentationMode.wrappedValue.dismiss()
+      }) {
+        Text("Login")
+          .foregroundColor(.midnightBlue)
+          .padding()
+      }
+    }
+    
+    
+  }
+    
 }
 
 #Preview {
-    RegistrationView()
+  RegistrationView()
 }

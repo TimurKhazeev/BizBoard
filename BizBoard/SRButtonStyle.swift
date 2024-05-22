@@ -1,18 +1,19 @@
 //
-//  SRButtonStyle.swift
-//  BizBoard
+//  SRButton.swift
+//  SocialRating
 //
-//  Created by Тимур Хазеев on 22.05.2024.
+//  Created by Тимур Хазеев on 16.11.2023.
 //
 
 import SwiftUI
 
-struct SRButtonStyle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct SRButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: 350, height: 50)
+            .background(Color.midnightBlue)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .contentShape(Rectangle())
     }
 }
 
-#Preview {
-    SRButtonStyle()
-}
