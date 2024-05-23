@@ -29,6 +29,12 @@
 		2F30EF182BFE8C1300B6C349 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30EF172BFE8C1300B6C349 /* MainViewModel.swift */; };
 		2F30EF1A2BFE8CDB00B6C349 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30EF192BFE8CDB00B6C349 /* MasterView.swift */; };
 		2F30EF1C2BFEA70800B6C349 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30EF1B2BFEA70800B6C349 /* ProfileView.swift */; };
+		2FE5A99C2BFF29630011209F /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A99B2BFF29630011209F /* DataLoader.swift */; };
+		2FE5A99E2BFF29E40011209F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A99D2BFF29E40011209F /* Models.swift */; };
+		2FE5A9A02BFF5A270011209F /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A99F2BFF5A270011209F /* MasterViewModel.swift */; };
+		2FE5A9A22BFF5DAD0011209F /* SalesByDaysChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A9A12BFF5DAD0011209F /* SalesByDaysChartView.swift */; };
+		2FE5A9A42BFF5F8B0011209F /* TopRetailersChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A9A32BFF5F8B0011209F /* TopRetailersChartView.swift */; };
+		2FE5A9A62BFF603A0011209F /* ShortSalesInfoChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A9A52BFF603A0011209F /* ShortSalesInfoChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,12 @@
 		2F30EF172BFE8C1300B6C349 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		2F30EF192BFE8CDB00B6C349 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		2F30EF1B2BFEA70800B6C349 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2FE5A99B2BFF29630011209F /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		2FE5A99D2BFF29E40011209F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		2FE5A99F2BFF5A270011209F /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
+		2FE5A9A12BFF5DAD0011209F /* SalesByDaysChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesByDaysChartView.swift; sourceTree = "<group>"; };
+		2FE5A9A32BFF5F8B0011209F /* TopRetailersChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRetailersChartView.swift; sourceTree = "<group>"; };
+		2FE5A9A52BFF603A0011209F /* ShortSalesInfoChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortSalesInfoChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +175,7 @@
 			children = (
 				2F30EF142BFE80FC00B6C349 /* Network */,
 				2F30EF122BFE7B6600B6C349 /* User.swift */,
+				2FE5A99D2BFF29E40011209F /* Models.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -170,6 +183,8 @@
 		2F03E3932BFAA0A200616632 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2FE5A9A32BFF5F8B0011209F /* TopRetailersChartView.swift */,
+				2FE5A9A12BFF5DAD0011209F /* SalesByDaysChartView.swift */,
 				2F03E35E2BFA253800616632 /* MainView.swift */,
 				2F30EF062BFE2AEB00B6C349 /* ScreensaverView.swift */,
 				2F30EF082BFE2DAF00B6C349 /* InputView.swift */,
@@ -177,6 +192,7 @@
 				2F30EF0E2BFE5D6600B6C349 /* RegistrationView.swift */,
 				2F30EF192BFE8CDB00B6C349 /* MasterView.swift */,
 				2F30EF1B2BFEA70800B6C349 /* ProfileView.swift */,
+				2FE5A9A52BFF603A0011209F /* ShortSalesInfoChartView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -184,6 +200,7 @@
 		2F03E3952BFAA0F500616632 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2FE5A99F2BFF5A270011209F /* MasterViewModel.swift */,
 				2F30EF0A2BFE5C4200B6C349 /* InputViewModel.swift */,
 				2F30EF102BFE7B1500B6C349 /* RegistrationViewModel.swift */,
 				2F30EF172BFE8C1300B6C349 /* MainViewModel.swift */,
@@ -205,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				2F30EF152BFE811400B6C349 /* Extensions.swift */,
+				2FE5A99B2BFF29630011209F /* DataLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -353,13 +371,19 @@
 				2F30EF092BFE2DAF00B6C349 /* InputView.swift in Sources */,
 				2F03E35F2BFA253800616632 /* MainView.swift in Sources */,
 				2F30EF0F2BFE5D6600B6C349 /* RegistrationView.swift in Sources */,
+				2FE5A9A22BFF5DAD0011209F /* SalesByDaysChartView.swift in Sources */,
+				2FE5A99C2BFF29630011209F /* DataLoader.swift in Sources */,
+				2FE5A9A62BFF603A0011209F /* ShortSalesInfoChartView.swift in Sources */,
 				2F03E35D2BFA253800616632 /* BizBoardApp.swift in Sources */,
 				2F30EF162BFE811400B6C349 /* Extensions.swift in Sources */,
+				2FE5A9A02BFF5A270011209F /* MasterViewModel.swift in Sources */,
 				2F30EF1A2BFE8CDB00B6C349 /* MasterView.swift in Sources */,
 				2F30EF132BFE7B6600B6C349 /* User.swift in Sources */,
 				2F30EF112BFE7B1500B6C349 /* RegistrationViewModel.swift in Sources */,
+				2FE5A9A42BFF5F8B0011209F /* TopRetailersChartView.swift in Sources */,
 				2F30EF0D2BFE5CC600B6C349 /* SRButtonStyle.swift in Sources */,
 				2F30EF0B2BFE5C4200B6C349 /* InputViewModel.swift in Sources */,
+				2FE5A99E2BFF29E40011209F /* Models.swift in Sources */,
 				2F30EF182BFE8C1300B6C349 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

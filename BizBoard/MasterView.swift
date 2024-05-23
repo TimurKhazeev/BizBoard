@@ -15,9 +15,18 @@ struct MasterView: View {
     self.userId = userId
   }
   
-    var body: some View {
-        Text("Главный экран")
-    }
+  @ObservedObject var viewModel = ProductViewModel()
+  
+  var body: some View {
+          ScrollView {
+              VStack {
+                  SalesByDaysChartView(viewModel: viewModel)
+                  TopRetailersChartView(viewModel: viewModel)
+                  ShortSalesInfoChartView(viewModel: viewModel)
+              }
+          }
+      }
+  
 }
 
 #Preview {

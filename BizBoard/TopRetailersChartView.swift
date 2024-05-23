@@ -1,5 +1,5 @@
 //
-//  SalesByDaysChartView.swift
+//  TopRetailersChartView.swift
 //  BizBoard
 //
 //  Created by Тимур Хазеев on 23.05.2024.
@@ -9,27 +9,27 @@ import Foundation
 import SwiftUI
 import Charts
 
-struct SalesByDaysChartView: View {
+struct TopRetailersChartView: View {
     @ObservedObject var viewModel: ProductViewModel
     
     var body: some View {
         VStack {
-            Text("Sales by Days")
+            Text("Top Retailers")
                 .font(.title)
                 .padding()
             
-            if let salesByDays = viewModel.salesByDays {
+            if viewModel.topRetailers.isEmpty {
+                Text("Loading...")
+            } else {
                 Chart {
-                    ForEach(salesByDays.main_diagram_info, id: \.name) { info in
-                        LineMark(
-                            x: .value("Date", info.date ?? ""),
-                            y: .value("Sales", info.sales ?? 0)
+                    ForEach(viewModel.topRetailers) { retailer in
+                        BarMark(
+                            x: .value("Retailer", retailer.name),
+                            y: .value("Difference", retailer.diff)
                         )
                     }
                 }
                 .padding()
-            } else {
-                Text("Loading...")
             }
         }
         .onAppear {
