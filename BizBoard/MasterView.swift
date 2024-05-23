@@ -18,15 +18,14 @@ struct MasterView: View {
   @ObservedObject var viewModel = ProductViewModel()
   
   var body: some View {
-          ScrollView {
-              VStack {
-                  SalesByDaysChartView(viewModel: viewModel)
-                  TopRetailersChartView(viewModel: viewModel)
-                  ShortSalesInfoChartView(viewModel: viewModel)
-              }
+      ScrollView {
+          VStack {
+              SalesByDaysChartView(viewModel: viewModel)
+              TopRetailersChartView(viewModel: viewModel)
+              ShortSalesInfoChartView(viewModel: viewModel)
           }
       }
-  
+  }
 }
 
 #Preview {

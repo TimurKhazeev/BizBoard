@@ -10,15 +10,31 @@
 import Foundation
 import Combine
 
+enum Period: String, CaseIterable {
+    case day = "Day"
+    case week = "Week"
+    case month = "Month"
+    case year = "Year"
+}
+
+enum ChartType: String, CaseIterable {
+    case bar = "Bar"
+    case line = "Line"
+    case pie = "Pie"
+}
+
 class ProductViewModel: ObservableObject {
-  @Published var products: [Product] = []
-  @Published var shortSalesInfo: ShortSalesInfoStatistic?
-  @Published var salesByDays: SalesByDays?
-  @Published var topRetailers: [TopRetailer] = []
-  
-  init() {
-    fetchData()
-  }
+    @Published var products: [Product] = []
+    @Published var shortSalesInfo: ShortSalesInfoStatistic?
+    @Published var salesByDays: SalesByDays?
+    @Published var topRetailers: [TopRetailer] = []
+    @Published var selectedPeriod: Period = .day  // Default period
+    @Published var selectedChartType: ChartType = .bar // Default chart type
+
+    init() {
+        fetchData()
+    }
+
   
   func fetchData() {
     // Загрузка данных для самых продаваемых продуктов
