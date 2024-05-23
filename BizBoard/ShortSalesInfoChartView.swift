@@ -47,53 +47,22 @@ struct ShortSalesInfoChartView: View {
                 }
             }
             
-            if let shortSalesInfo = viewModel.shortSalesInfo {
-                Chart {
-                    switch selectedChartType {
-                    case .bar:
-                        BarMark(
-                            x: .value("Category", "Total Sales"),
-                            y: .value("Value", Double(shortSalesInfo.qty_total_sales))
-                        )
-                        BarMark(
-                            x: .value("Category", "Avg Total Sales Percent"),
-                            y: .value("Value", Double(shortSalesInfo.avg_total_sales_percent))
-                        )
-                        BarMark(
-                            x: .value("Category", "Total Sales Percent"),
-                            y: .value("Value", Double(shortSalesInfo.total_sales_percent) ?? 0.0)
-                        )
-                    case .line:
-                        LineMark(
-                            x: .value("Category", "Total Sales"),
-                            y: .value("Value", Double(shortSalesInfo.qty_total_sales))
-                        )
-                        LineMark(
-                            x: .value("Category", "Avg Total Sales Percent"),
-                            y: .value("Value", Double(shortSalesInfo.avg_total_sales_percent))
-                        )
-                        LineMark(
-                            x: .value("Category", "Total Sales Percent"),
-                            y: .value("Value", Double(shortSalesInfo.total_sales_percent) ?? 0.0)
-                        )
-                    case .pie:
-                        SectorMark(
-                            angle: .value("Total Sales", Double(shortSalesInfo.qty_total_sales))
-                        )
-                        .foregroundStyle(by: .value("Category", "Total Sales"))
-                        SectorMark(
-                            angle: .value("Avg Total Sales Percent", Double(shortSalesInfo.avg_total_sales_percent))
-                        )
-                        .foregroundStyle(by: .value("Category", "Avg Total Sales Percent"))
-                        SectorMark(
-                            angle: .value("Total Sales Percent", Double(shortSalesInfo.total_sales_percent) ?? 0.0)
-                        )
-                        .foregroundStyle(by: .value("Category", "Total Sales Percent"))
-                    }
-                }
-                .frame(height: 400) // Increase the height of the chart
-                .padding()
-            } else {
+          if let shortSalesInfo = viewModel.shortSalesInfo {
+            Divider()
+            Text("Short Sales Info:")
+              .font(.headline)
+            
+            Text("Total Sales: \(shortSalesInfo.total_sales)")
+            Text("Total Sales Percent: \(shortSalesInfo.total_sales_percent)")
+            Text("Qty Total Sales: \(shortSalesInfo.qty_total_sales)")
+            Text("Qty Total Sales Percent: \(shortSalesInfo.qty_total_sales_percent)")
+            Text("Avg Total Sales: \(shortSalesInfo.avg_total_sales)")
+            Text("Avg Total Sales Percent: \(shortSalesInfo.avg_total_sales_percent)%")
+            Text("Total Sales Class: \(shortSalesInfo.total_sales_class)")
+            Text("Qty Total Sales Class: \(shortSalesInfo.qty_total_sales_class)")
+            Text("Avg Total Class: \(shortSalesInfo.avg_total_class)")
+            Text("Avg Total Percent: \(shortSalesInfo.avg_total_percent)")
+        } else {
                 Text("Loading...")
             }
         }
