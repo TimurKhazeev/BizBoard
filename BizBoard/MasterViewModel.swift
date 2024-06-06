@@ -38,7 +38,7 @@ class ProductViewModel: ObservableObject {
   
   func fetchData() {
     // Загрузка данных для самых продаваемых продуктов
-    if let productUrl = URL(string: "http://localhost:8888/Data/best_selling_products.json") {
+    if let productUrl = URL(string: "https://admin.n1.devb2border.com/kr/best_selling_products.json") {
       URLSession.shared.dataTask(with: productUrl) { data, _, error in
         if let data = data {
           do {
@@ -54,7 +54,7 @@ class ProductViewModel: ObservableObject {
     }
     
     // Загрузка данных для краткой информации о продажах
-    if let shortSalesInfoUrl = URL(string: "http://localhost:8888/Data/getShortSalesInfoStatistic.json") {
+    if let shortSalesInfoUrl = URL(string: "https://admin.n1.devb2border.com/kr/getShortSalesInfoStatistic.json") {
       URLSession.shared.dataTask(with: shortSalesInfoUrl) { data, _, error in
         if let data = data {
           do {
@@ -70,7 +70,7 @@ class ProductViewModel: ObservableObject {
     }
     
     // Загрузка данных для продажи по дням
-    if let salesByDaysUrl = URL(string: "http://localhost:8888/Data/sales_by_days.json") {
+    if let salesByDaysUrl = URL(string: "https://admin.n1.devb2border.com/kr/sales_by_days.json") {
       URLSession.shared.dataTask(with: salesByDaysUrl) { data, _, error in
         if let data = data {
           do {
@@ -86,7 +86,7 @@ class ProductViewModel: ObservableObject {
     }
     
     // Загрузка данных для лучших ретейлеров
-    if let topRetailersUrl = URL(string: "http://localhost:8888/Data/top_retailers.json") {
+    if let topRetailersUrl = URL(string: "https://admin.n1.devb2border.com/kr/top_retailers.json") {
                 URLSession.shared.dataTask(with: topRetailersUrl) { data, _, error in
                     if let data = data {
                         do {

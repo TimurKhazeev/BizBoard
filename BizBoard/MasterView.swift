@@ -23,6 +23,7 @@ struct MasterView: View {
               SalesByDaysChartView(viewModel: viewModel)
               TopRetailersChartView(viewModel: viewModel)
               ShortSalesInfoChartView(viewModel: viewModel)
+              ProductSalesChartView(viewModel: viewModel)
           }
       }
   }
