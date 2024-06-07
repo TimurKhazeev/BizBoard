@@ -29,7 +29,7 @@
 		2F30EF182BFE8C1300B6C349 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30EF172BFE8C1300B6C349 /* MainViewModel.swift */; };
 		2F30EF1A2BFE8CDB00B6C349 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30EF192BFE8CDB00B6C349 /* MasterView.swift */; };
 		2F30EF1C2BFEA70800B6C349 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30EF1B2BFEA70800B6C349 /* ProfileView.swift */; };
-		2F35C5152C124AA000B30355 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35C5142C124AA000B30355 /* SwiftUIView.swift */; };
+		2F35C5152C124AA000B30355 /* ProductSalesChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35C5142C124AA000B30355 /* ProductSalesChartView.swift */; };
 		2F5F39CD2BFFF8BF00FBA83F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F39CC2BFFF8BF00FBA83F /* ProfileViewModel.swift */; };
 		2FE5A99C2BFF29630011209F /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A99B2BFF29630011209F /* DataLoader.swift */; };
 		2FE5A99E2BFF29E40011209F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5A99D2BFF29E40011209F /* Models.swift */; };
@@ -79,7 +79,7 @@
 		2F30EF172BFE8C1300B6C349 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		2F30EF192BFE8CDB00B6C349 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		2F30EF1B2BFEA70800B6C349 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		2F35C5142C124AA000B30355 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		2F35C5142C124AA000B30355 /* ProductSalesChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSalesChartView.swift; sourceTree = "<group>"; };
 		2F5F39CC2BFFF8BF00FBA83F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2FE5A99B2BFF29630011209F /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		2FE5A99D2BFF29E40011209F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -142,7 +142,6 @@
 			children = (
 				2F03E3962BFAA14E00616632 /* Other */,
 				2F03E3952BFAA0F500616632 /* ViewModels */,
-				2F03E3932BFAA0A200616632 /* Views */,
 				2F03E3922BFAA08C00616632 /* Models */,
 				2F03E3622BFA253B00616632 /* Preview Content */,
 			);
@@ -197,7 +196,7 @@
 				2F30EF192BFE8CDB00B6C349 /* MasterView.swift */,
 				2F30EF1B2BFEA70800B6C349 /* ProfileView.swift */,
 				2FE5A9A52BFF603A0011209F /* ShortSalesInfoChartView.swift */,
-				2F35C5142C124AA000B30355 /* SwiftUIView.swift */,
+				2F35C5142C124AA000B30355 /* ProductSalesChartView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -208,6 +207,7 @@
 				2FE5A99F2BFF5A270011209F /* MasterViewModel.swift */,
 				2F30EF0A2BFE5C4200B6C349 /* InputViewModel.swift */,
 				2F30EF102BFE7B1500B6C349 /* RegistrationViewModel.swift */,
+				2F03E3932BFAA0A200616632 /* Views */,
 				2F30EF172BFE8C1300B6C349 /* MainViewModel.swift */,
 				2F5F39CC2BFFF8BF00FBA83F /* ProfileViewModel.swift */,
 			);
@@ -380,7 +380,7 @@
 				2FE5A9A22BFF5DAD0011209F /* SalesByDaysChartView.swift in Sources */,
 				2FE5A99C2BFF29630011209F /* DataLoader.swift in Sources */,
 				2FE5A9A62BFF603A0011209F /* ShortSalesInfoChartView.swift in Sources */,
-				2F35C5152C124AA000B30355 /* SwiftUIView.swift in Sources */,
+				2F35C5152C124AA000B30355 /* ProductSalesChartView.swift in Sources */,
 				2F03E35D2BFA253800616632 /* BizBoardApp.swift in Sources */,
 				2F30EF162BFE811400B6C349 /* Extensions.swift in Sources */,
 				2FE5A9A02BFF5A270011209F /* MasterViewModel.swift in Sources */,

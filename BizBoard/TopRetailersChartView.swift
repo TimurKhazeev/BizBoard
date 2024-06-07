@@ -4,26 +4,18 @@
 //
 //  Created by Тимур Хазеев on 23.05.2024.
 //
+
 import SwiftUI
 import Charts
 
 struct TopRetailersChartView: View {
     @ObservedObject var viewModel: ProductViewModel
     
-    @State private var selectedPeriod: Period = .month
-  @State private var selectedChartType: ChartType = .pie
+    @State private var selectedChartType: ChartType = .pie
     
     var filteredTopRetailers: [TopRetailer] {
-        switch selectedPeriod {
-        case .day:
-            return Array(viewModel.topRetailers.prefix(5)) // Пример фильтрации для дневного периода
-        case .week:
-            return Array(viewModel.topRetailers.prefix(10)) // Пример фильтрации для недельного периода
-        case .month:
-            return Array(viewModel.topRetailers.prefix(15)) // Пример фильтрации для месячного периода
-        case .year:
-            return viewModel.topRetailers // Пример фильтрации для годового периода
-        }
+        // Removed the switch statement related to selectedPeriod
+        return Array(viewModel.topRetailers.prefix(15)) // Assuming a fixed period of 15 for this example
     }
     
     var body: some View {
@@ -33,18 +25,7 @@ struct TopRetailersChartView: View {
                 .padding()
             
             HStack {
-                Menu {
-                    ForEach(Period.allCases, id: \.self) { period in
-                        Button(action: {
-                            selectedPeriod = period
-                        }) {
-                            Text(period.rawValue)
-                        }
-                    }
-                } label: {
-                    Label("Period: \(selectedPeriod.rawValue)", systemImage: "calendar")
-                        .padding()
-                }
+                // Removed the menu for selecting period
                 
                 Menu {
                     ForEach(ChartType.allCases, id: \.self) { chartType in

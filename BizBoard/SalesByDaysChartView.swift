@@ -1,35 +1,33 @@
-//
-//  SalesByDaysChartView.swift
-//  BizBoard
-//
-//  Created by Тимур Хазеев on 23.05.2024.
-
 import SwiftUI
 import Charts
 
 struct SalesByDaysChartView: View {
     @ObservedObject var viewModel: ProductViewModel
     
-  @State private var selectedPeriod: Period = .month
+    @State private var selectedPeriod: Period = .month
     @State private var selectedChartType: ChartType = .bar
     @State private var currentIndex: Int = 0
+    @State private var startDate: Date = Date()
+    @State private var endDate: Date = Date()
     
     var filteredData: [SalesByDays.MainDiagramInfo] {
         guard let salesData = viewModel.salesByDays?.main_diagram_info else { return [] }
-        let chunkSize: Int
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         switch selectedPeriod {
-        case .day:
-            chunkSize = 1
-        case .week:
-            chunkSize = 7
-        case .month:
-            chunkSize = 30
-        case .year:
-            chunkSize = 365
+        case .day, .week, .month, .year:
+            let chunkSize = selectedPeriod.chunkSize
+            let startIndex = currentIndex * chunkSize
+            let endIndex = min(startIndex + chunkSize, salesData.count)
+            return Array(salesData[startIndex..<endIndex])
+        case .custom:
+            return salesData.filter {
+                guard let dateString = $0.date, let date = dateFormatter.date(from: dateString) else { return false }
+                return date >= startDate && date <= endDate
+            }
         }
-        let startIndex = currentIndex * chunkSize
-        let endIndex = min(startIndex + chunkSize, salesData.count)
-        return Array(salesData[startIndex..<endIndex])
     }
     
     var body: some View {
@@ -67,6 +65,13 @@ struct SalesByDaysChartView: View {
                 }
             }
             
+            if selectedPeriod == .custom {
+                DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                    .padding()
+                DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                    .padding()
+            }
+            
             HStack {
                 Button(action: {
                     if currentIndex > 0 {
@@ -91,6 +96,8 @@ struct SalesByDaysChartView: View {
                         maxIndex = (viewModel.salesByDays?.main_diagram_info.count ?? 0) / 30
                     case .year:
                         maxIndex = (viewModel.salesByDays?.main_diagram_info.count ?? 0) / 365
+                    case .custom:
+                        maxIndex = 0
                     }
                     if currentIndex < maxIndex {
                         currentIndex += 1
@@ -128,7 +135,7 @@ struct SalesByDaysChartView: View {
                         }
                     }
                 }
-                .frame(height: 400) // Increase the height of the chart
+                .frame(height: 400)
                 .padding()
             } else {
                 Text("Loading...")
@@ -151,6 +158,9 @@ private extension Period {
             return 30
         case .year:
             return 365
+        case .custom:
+            return 1
         }
     }
 }
+
