@@ -109,7 +109,7 @@ struct SalesByDaysChartView: View {
                 .disabled(currentIndex >= (viewModel.salesByDays?.main_diagram_info.count ?? 0) / selectedPeriod.chunkSize)
             }
             
-            if let salesByDays = viewModel.salesByDays {
+          if viewModel.salesByDays != nil {
                 Chart {
                     switch selectedChartType {
                     case .bar:

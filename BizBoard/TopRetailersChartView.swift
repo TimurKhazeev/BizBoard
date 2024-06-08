@@ -81,7 +81,7 @@ struct TopRetailersChartView: View {
                         }
                     }
                 }
-                .frame(height: 400) // Increase the height of the chart
+                .frame(height: 400)
                 .padding()
             }
         }

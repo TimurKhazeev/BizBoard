@@ -35,33 +35,7 @@ struct ProductSalesChartView: View {
                 } label: {
                     Label("Chart Type: \(selectedChartType.rawValue)", systemImage: "chart.bar")
                         .padding()
-//                        .colorMultiply(Color.midnightBlue)
                 }
-            }
-
-            HStack {
-                Button(action: {
-                    if currentIndex > 0 {
-                        currentIndex -= 1
-                    }
-                }) {
-                    Label("Previous", systemImage: "chevron.left")
-                }
-                .padding()
-                .disabled(currentIndex == 0)
-                
-                Spacer()
-                
-                Button(action: {
-                    let maxIndex = (viewModel.products.count - 1) / 30 // Assuming monthly chunks
-                    if currentIndex < maxIndex {
-                        currentIndex += 1
-                    }
-                }) {
-                    Label("Next", systemImage: "chevron.right")
-                }
-                .padding()
-                .disabled(currentIndex >= (viewModel.products.count - 1) / 30)
             }
 
             if filteredProducts.isEmpty {
