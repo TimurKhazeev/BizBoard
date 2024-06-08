@@ -12,6 +12,7 @@ struct TopRetailersChartView: View {
     @ObservedObject var viewModel: ProductViewModel
     
     @State private var selectedChartType: ChartType = .pie
+    @State private var selectedDataKey: DataKey = .diff // Новое состояние для выбора данных
     
     var filteredTopRetailers: [TopRetailer] {
         // Removed the switch statement related to selectedPeriod
@@ -25,7 +26,18 @@ struct TopRetailersChartView: View {
                 .padding()
             
             HStack {
-                // Removed the menu for selecting period
+                Menu {
+                    ForEach(DataKey.allCases, id: \.self) { dataKey in
+                        Button(action: {
+                            selectedDataKey = dataKey
+                        }) {
+                            Text(dataKey.rawValue)
+                        }
+                    }
+                } label: {
+                    Label("Data: \(selectedDataKey.rawValue)", systemImage: "chart.bar.xaxis")
+                        .padding()
+                }
                 
                 Menu {
                     ForEach(ChartType.allCases, id: \.self) { chartType in
@@ -50,20 +62,20 @@ struct TopRetailersChartView: View {
                         ForEach(filteredTopRetailers) { retailer in
                             BarMark(
                                 x: .value("Retailer", retailer.name),
-                                y: .value("Difference", retailer.diff)
+                                y: .value("Data", dataValue(for: retailer))
                             )
                         }
                     case .line:
                         ForEach(filteredTopRetailers) { retailer in
                             LineMark(
                                 x: .value("Retailer", retailer.name),
-                                y: .value("Difference", retailer.diff)
+                                y: .value("Data", dataValue(for: retailer))
                             )
                         }
                     case .pie:
                         ForEach(filteredTopRetailers) { retailer in
                             SectorMark(
-                                angle: .value("Difference", retailer.diff)
+                                angle: .value("Data", dataValue(for: retailer))
                             )
                             .foregroundStyle(by: .value("Retailer", retailer.name))
                         }
@@ -77,4 +89,38 @@ struct TopRetailersChartView: View {
             viewModel.fetchData()
         }
     }
+    
+    // Helper function to get the selected data value
+    private func dataValue(for retailer: TopRetailer) -> Double {
+        switch selectedDataKey {
+        case .diff:
+            return Double(retailer.diff)
+        case .quantity:
+            return Double(retailer.quantity) ?? 0
+        case .ordersQty:
+            return Double(retailer.renderInfo.infoItemOrdersQty)
+        case .infoItemSum:
+            return parseStringToDouble(retailer.renderInfo.infoItemSum)
+        case .infoItemShippingPrice:
+            return parseStringToDouble(retailer.renderInfo.infoItemShippingPrice)
+        case .infoItemDiscountPrice:
+            return parseStringToDouble(retailer.renderInfo.infoItemDiscountPrice)
+        }
+    }
+    
+    // Helper function to parse string to double
+    private func parseStringToDouble(_ value: String) -> Double {
+        let cleanedString = value.replacingOccurrences(of: "[^0-9.]", with: "", options: .regularExpression)
+        return Double(cleanedString) ?? 0
+    }
+}
+
+// Enum for different data keys
+enum DataKey: String, CaseIterable {
+    case diff = "Difference"
+    case quantity = "Quantity"
+    case ordersQty = "Orders Quantity"
+    case infoItemSum = "Item Sum"
+    case infoItemShippingPrice = "Shipping Price"
+    case infoItemDiscountPrice = "Discount Price"
 }

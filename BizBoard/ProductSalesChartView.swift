@@ -35,6 +35,7 @@ struct ProductSalesChartView: View {
                 } label: {
                     Label("Chart Type: \(selectedChartType.rawValue)", systemImage: "chart.bar")
                         .padding()
+//                        .colorMultiply(Color.midnightBlue)
                 }
             }
 
@@ -114,7 +115,7 @@ struct ProductSalesChartView: View {
         }
         .sheet(isPresented: $showDetailSheet) {
             if let selectedProduct = selectedProduct {
-                ProductDetailView(product: selectedProduct)
+                ProductDetailView(product: selectedProduct, isPresented: $showDetailSheet)
             }
         }
         .onAppear {
@@ -125,30 +126,46 @@ struct ProductSalesChartView: View {
 
 struct ProductDetailView: View {
     let product: Product
+    @Binding var isPresented: Bool
 
     var body: some View {
-        List {
-            Section(header: Text("Product Details").font(.title)) {
-                Text("Name: \(product.productName)")
-                Text("Quantity: \(product.productQuantity)")
-                Text("Price: \(product.renderInfo.infoItemPrice)")
-            }
+        VStack {
+            List {
+                Section(header: Text("Product Details").font(.title)) {
+                    Text("Name: \(product.productName)")
+                    Text("Quantity: \(product.productQuantity)")
+                    Text("Price: \(product.renderInfo.infoItemPrice)")
+                }
 
-            Section(header: Text("Render Info")) {
-                Text("Item Name: \(product.renderInfo.infoItemName)")
-                Text("Item Qty: \(product.renderInfo.infoItemQty)")
-                Text("Item Prev Price: \(product.renderInfo.infoItemPrevPrice)")
-                Text("Item Prev Qty: \(product.renderInfo.infoItemPrevQty)")
-            }
+                Section(header: Text("Render Info")) {
+                    Text("Item Name: \(product.renderInfo.infoItemName)")
+                    Text("Item Qty: \(product.renderInfo.infoItemQty)")
+                    Text("Item Prev Price: \(product.renderInfo.infoItemPrevPrice)")
+                    Text("Item Prev Qty: \(product.renderInfo.infoItemPrevQty)")
+                }
 
-            Section(header: Text("Render Delta")) {
-                Text("Delta Prev Price: \(product.renderDelta.infoItemPrevPrice)")
-                Text("Delta Prev Qty: \(product.renderDelta.infoItemPrevQty)")
+                Section(header: Text("Render Delta")) {
+                    Text("Delta Prev Price: \(product.renderDelta.infoItemPrevPrice)")
+                    Text("Delta Prev Qty: \(product.renderDelta.infoItemPrevQty)")
+                }
+            }
+            .listStyle(InsetGroupedListStyle())
+            .padding()
+
+            Spacer()
+
+            Button(action: {
+                isPresented = false
+            }) {
+                Text("Close")
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.midnightBlue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
             }
         }
-        .listStyle(InsetGroupedListStyle())
-        .padding()
     }
 }
-
-
