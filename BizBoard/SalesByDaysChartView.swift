@@ -9,7 +9,8 @@ struct SalesByDaysChartView: View {
     @State private var currentIndex: Int = 0
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
-    
+
+  
     var filteredData: [SalesByDays.MainDiagramInfo] {
         guard let salesData = viewModel.salesByDays?.main_diagram_info else { return [] }
         
@@ -135,7 +136,7 @@ struct SalesByDaysChartView: View {
                         }
                     }
                 }
-                .frame(height: 400)
+                .frame(height: selectedChartType == .pie && selectedPeriod == .year ? 1200 : 400)
                 .padding()
             } else {
                 Text("Loading...")

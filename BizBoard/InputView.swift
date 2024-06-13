@@ -31,7 +31,7 @@ struct InputView: View {
         }
         .padding(.top, 15)
         
-        // Форма регистрации
+        // Форма входа
         VStack {
           
           // Подзаголовок
@@ -47,7 +47,7 @@ struct InputView: View {
           // Сообщение об ошибки
           if !viewModel.errorMessage.isEmpty {
             Text(viewModel.errorMessage)
-              .foregroundColor(.blue)
+              .foregroundColor(.red)
           }
           
           // Поле Email

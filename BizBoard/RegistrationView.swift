@@ -15,16 +15,6 @@ struct RegistrationView: View {
   
   var body: some View {
     
-    // Сообщение об ошибки
-    VStack {
-      if !viewModel.errorMessage.isEmpty {
-        Text(viewModel.errorMessage)
-          .foregroundColor(.blue)
-      }
-    }
-    .padding(.top, 15)
-    
-    
     ScrollView{
       // Заголовок
       HStack {
@@ -37,6 +27,15 @@ struct RegistrationView: View {
           .font(.system(size: 40))
           .foregroundColor(.midnightBlue)
           .bold()
+      }
+      .padding(.top, 15)
+      
+      // Сообщение об ошибки
+      VStack {
+        if !viewModel.errorMessage.isEmpty {
+          Text(viewModel.errorMessage)
+            .foregroundColor(.red)
+        }
       }
       .padding(.top, 15)
       

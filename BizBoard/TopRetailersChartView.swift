@@ -115,12 +115,4 @@ struct TopRetailersChartView: View {
     }
 }
 
-// Enum for different data keys
-enum DataKey: String, CaseIterable {
-    case diff = "Difference"
-    case quantity = "Quantity"
-    case ordersQty = "Orders Quantity"
-    case infoItemSum = "Item Sum"
-    case infoItemShippingPrice = "Shipping Price"
-    case infoItemDiscountPrice = "Discount Price"
-}
+

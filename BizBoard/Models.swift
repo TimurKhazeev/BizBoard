@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Перечисления Period и ChartType
+// Period, ChartType and DataKey
 enum Period: String, CaseIterable {
     case day = "Day"
     case week = "Week"
@@ -20,6 +20,15 @@ enum ChartType: String, CaseIterable {
     case bar = "Bar"
     case line = "Line"
     case pie = "Pie"
+}
+
+enum DataKey: String, CaseIterable {
+    case diff = "Difference"
+    case quantity = "Quantity"
+    case ordersQty = "Orders Quantity"
+    case infoItemSum = "Item Sum"
+    case infoItemShippingPrice = "Shipping Price"
+    case infoItemDiscountPrice = "Discount Price"
 }
 
 // best_selling_products
@@ -143,7 +152,6 @@ struct TopRetailer: Codable, Identifiable {
         }
     }
 
-    // Идентификатор для использования в ForEach
     var id: String {
         return name
     }
@@ -154,3 +162,4 @@ struct TopRetailer: Codable, Identifiable {
         case renderInfo = "render_info"
     }
 }
+
